@@ -1,0 +1,59 @@
+{
+  "name": "RNN",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "start": "react-native start",
+    "test": "jest",
+    "lint": "eslint .",
+    "ios:clean": "rm -rf ~/Library/Developer/Xcode/DerivedData/* && rm -rf ios/build",
+    "android:clean": "cd android && ./gradlew clean",
+    "devices": "adb devices",
+    "shake": "adb devices | grep '\\t' | awk '{print $1}' | sed 's/\\s//g' | xargs -I {} adb -s {} shell input keyevent 82",
+    "ios:pod": "cd ios && rm -rf Pods && rm -rf Podfile.lock && pod install",
+    "keystore:generate": "cd android && cd app && keytool -genkeypair -v -keystore my-upload-key.keystore -alias my-key-alias -keyalg RSA -keysize 2048 -validity 10000",
+    "debug:keystore": "cd android && cd app && keytool -exportcert -alias androiddebugkey -keystore debug.keystore | openssl sha1 -binary | openssl base64",
+    "release:keystore": "cd android && cd app && keytool -exportcert -alias my-key-alias -keystore my-upload-key.keystore | openssl sha1 -binary | openssl base64",
+    "SHA1:debug": "cd android && cd app && keytool -exportcert -keystore debug.keystore -list -v",
+    "SHA1:release": "cd android && cd app && keytool -exportcert -keystore my-upload-key.keystore -list -v",
+    "IP:config": "ifconfig | grep 'inet '",
+    "copyFontToNodeModule": "cp ./src/assets/fonts/*.ttf ./node_modules/react-native-vector-icons/Fonts",
+    "newclear": "rm -rf node_modules && rm -rf $TMPDIR/react-* && watchman watch-del-all && rm -rf ios/build/ModuleCache/* && rm -rf ios/build/* && npm cache clean --force && rm -rf ~/.rncache && yarn cache clean && yarn install && yarn fix-xcode && yarn copyFontToNodeModule && yarn ios:pod && yarn android:clean ",
+    "fix-xcode": "react-native-schemes-manager all",
+    "postinstall": "react-native-schemes-manager all"
+  },
+  "xcodeSchemes": {
+    "Debug": [
+      "Debug"
+    ],
+    "Release": [
+      "Staging",
+      "Release"
+    ],
+    "projectDirectory": "iOS"
+  },
+  "dependencies": {
+    "react": "16.13.1",
+    "react-native": "0.63.4",
+    "react-native-config": "^1.4.1",
+    "react-native-navigation": "^7.5.0",
+    "react-native-navigation-hooks": "^6.2.0",
+    "react-native-vector-icons": "^7.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@babel/runtime": "^7.8.4",
+    "@react-native-community/eslint-config": "^1.1.0",
+    "babel-jest": "^25.1.0",
+    "eslint": "^6.5.1",
+    "jest": "^25.1.0",
+    "metro-react-native-babel-preset": "^0.59.0",
+    "react-native-schemes-manager": "^2.0.0",
+    "react-test-renderer": "16.13.1"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}
