@@ -19,7 +19,7 @@
     "SHA1:debug": "cd android && cd app && keytool -exportcert -keystore debug.keystore -list -v",
     "SHA1:release": "cd android && cd app && keytool -exportcert -keystore my-upload-key.keystore -list -v",
     "IP:config": "ifconfig | grep 'inet '",
-    "copyFontToNodeModule": "cp ./src/assets/fonts/*.ttf ./node_modules/react-native-vector-icons/Fonts",
+    "copyFontToNodeModule": "cp ./src/asset/fonts/*.ttf ./node_modules/react-native-vector-icons/Fonts",
     "newclear": "rm -rf node_modules && rm -rf $TMPDIR/react-* && watchman watch-del-all && rm -rf ios/build/ModuleCache/* && rm -rf ios/build/* && npm cache clean --force && rm -rf ~/.rncache && yarn cache clean && yarn install && yarn fix-xcode && yarn copyFontToNodeModule && yarn ios:pod && yarn android:clean ",
     "fix-xcode": "react-native-schemes-manager all",
     "postinstall": "react-native-schemes-manager all"
@@ -35,12 +35,24 @@
     "projectDirectory": "iOS"
   },
   "dependencies": {
+    "@react-native-async-storage/async-storage": "^1.13.2",
+    "@react-native-community/netinfo": "^5.9.9",
+    "@reduxjs/toolkit": "^1.5.0",
+    "formik": "^2.2.5",
+    "lodash": "^4.17.20",
+    "moment": "^2.29.1",
+    "prop-types": "^15.7.2",
     "react": "16.13.1",
     "react-native": "0.63.4",
+    "react-native-appearance": "^0.3.4",
     "react-native-config": "^1.4.1",
     "react-native-navigation": "^7.5.0",
     "react-native-navigation-hooks": "^6.2.0",
-    "react-native-vector-icons": "^7.1.0"
+    "react-native-vector-icons": "^7.1.0",
+    "react-redux": "^7.2.2",
+    "redux-logger": "^3.0.6",
+    "redux-persist": "^6.0.0",
+    "yup": "^0.32.1"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
