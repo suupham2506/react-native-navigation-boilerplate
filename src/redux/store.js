@@ -17,6 +17,7 @@ const middleware = [
   ...getDefaultMiddleware({
     serializableCheck: {
       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      ignoredActionPaths: ['payload.user'],
     },
   }),
 ];

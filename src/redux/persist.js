@@ -5,7 +5,7 @@ const reduxPersist = {
   storage: AsyncStorage,
   timeout: null,
   version: 1,
-  whitelist: [],
+  whitelist: ['config', 'auth'],
   blacklist: [],
 };
 

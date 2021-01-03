@@ -12,6 +12,7 @@ import java.util.List;
 
 import com.reactnativenavigation.NavigationApplication;
 import com.reactnativenavigation.react.NavigationReactNativeHost;
+import androidx.multidex.MultiDex;
 
 public class MainApplication extends NavigationApplication {
 
@@ -47,6 +48,13 @@ public class MainApplication extends NavigationApplication {
     super.onCreate();
     initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
   }
+
+  @Override
+  protected void attachBaseContext(Context base) {
+     super.attachBaseContext(base);
+     MultiDex.install(this);
+  }
+
 
   /**
    * Loads Flipper in React Native templates. Call this in the onCreate method with something like
